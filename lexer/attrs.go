@@ -65,7 +65,7 @@ func lexAttrAssign(l *Lexer) lexFn {
 		return lexUnexpectedRune(l, r)
 	}
 	l.emit(AttrAssign)
-	if r, eof = l.skipSpaces(); eof {
+	if _, eof = l.skipSpaces(); eof {
 		return lexUnexpectedEOF(l)
 	}
 	return lexAttrValue
@@ -135,7 +135,7 @@ func lexAttrsEnd(l *Lexer) lexFn {
 		return lexUnexpectedRune(l, r)
 	}
 	l.emit(AttrsEnd)
-	if r, eof = l.skipSpaces(); eof {
+	if _, eof = l.skipSpaces(); eof {
 		return nil
 	}
 	return lexText
